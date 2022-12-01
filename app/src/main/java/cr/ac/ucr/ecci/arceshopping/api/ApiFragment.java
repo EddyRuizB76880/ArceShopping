@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,7 +18,7 @@ import cr.ac.ucr.ecci.arceshopping.GridSpacingItemDecoration;
 import cr.ac.ucr.ecci.arceshopping.SingleProductActivity;
 import cr.ac.ucr.ecci.arceshopping.model.Product;
 import cr.ac.ucr.ecci.arceshopping.model.Products;
-import cr.ac.ucr.ecci.arceshopping.ProductsAdapter;
+import cr.ac.ucr.ecci.arceshopping.adapters.ProductsAdapter;
 import cr.ac.ucr.ecci.arceshopping.R;
 import cr.ac.ucr.ecci.arceshopping.MainActivity;
 import cr.ac.ucr.ecci.arceshopping.databinding.FragmentApiBinding;
@@ -45,10 +49,11 @@ public class ApiFragment extends Fragment implements ListProductViewInterface{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
+        setHasOptionsMenu(true);
         binding = FragmentApiBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         rvProducts = (RecyclerView) root.findViewById(R.id.rvProducts);
+        // Obtain objects from the web api
         StringRequest myRequest = new StringRequest(Request.Method.GET,
                 URLEXAMPLE,
                 response -> {
@@ -82,12 +87,45 @@ public class ApiFragment extends Fragment implements ListProductViewInterface{
         return root;
     }
 
+    // Sends the user to the product individual screen when he/she clicks the product
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        // inside inflater we are inflating our menu file.
+        inflater.inflate(R.menu.search_menu, menu);
+
+        // below line is to get our menu item.
+        MenuItem searchItem = menu.findItem(R.id.actionSearch);
+
+        // getting search view of our item.
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        // below line is to call set on query text listener method.
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // inside on query text change method we are
+                // calling a method to filter our recycler view.
+                ((MainActivity) getActivity()).filter(newText);
+                return false;
+            }
+        });
+    }
+
     @Override
     public void onItemClick(Product product) {
         Intent intent = new Intent(getActivity(), SingleProductActivity.class);
         intent.putExtra("product", product);
         startActivity(intent);
     }
+
+
 
     @Override
     public void onDestroyView() {
