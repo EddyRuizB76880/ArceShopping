@@ -1,32 +1,32 @@
 # ArceShopping
-Este es el proyecto realizado durante el curso de Desarrollo de aplicaciones móviles en el segundo semestre 2022 de la Universidad de Costa Rica.
+This Android application was created during the Mobile software development course imparted at the Universidad de Costa Rica, throughout the second semester of 2022. 
 
 ## Developers
 - [Sol Valle](https://github.com/solvalle "Sol valle") 
 - [Asdrúbal Villegas](https://github.com/asdru333 "Asdrúbal Villegas")
 - Eddy Ruiz
 
-## Tareas
-En este proyecto, realizamos:
-- Almacenamiento persistente mediante SQL Lite para el guardado de usuarios y compras durante las 2 primeras iteraciones. Luego, migramos a Firebase.
-- Consumo de API por medio de Volley y Gson, de Google.
-- Manejo de sesión de usuario por medio de FirebaseAuth.
-- Creación y manipulación de elementos UI definidos en XML.
-- Creación y uso de Fragments.
-- Envio de e-mails.
-- Recuperación de imágenes de la galería del dispositivo.
-- Uso de la cámara del dispositivo.
-- Carga de imágenes por medio de librería Picasso.
-- Manejo de permisos de dispositivo como acceso a archivos del teléfono, ubicación del usuario, entre otros.
-- Función de compartir compras por medio de redes sociales.
+## Tasks
+In this project, we implemented:
+- Persistent storage, using SQL lite to save user data and purchases during the first 2 sprints. In the 3rd sprint, we switched to Firebase.
+- API consumption using the Volley and Gson libraries, both created by Google.
+- User session management using FirebaseAuth.
+- Manipulation of UI elements defined in XML files.
+- Use and creation of Fragments.
+- E-mail sending.
+- Image retrieval using the device's gallery and internal storage.
+- Use of device's camera.
+- Image loading using the Picasso library.
+- Device's permissions management, such as permission to use device's internet connection, user's exact location, among others.
+- Sharing purchases by social media.
 
 ## Features
-- Registro de usuarios e inicio de sesión de los mismos.
-- Función de restaurar contraseña.
-- Tab de usuario que permite cambiar datos como nombre, provincia de residencia y asignar una foto de perfil por medio de galería o cámara.
-- Tab de tienda que permite al usuario incluir distintas cantidades de productos disponibles a su carrito de compras.
-- Tab de carrito que permite al usuario confirmar su compra o bien, remover productos o incrementar el número de ellos en el carrito.  
-- Pantalla de historial de compras, donde el usuario puede ver qué compras ha hecho, el detalle de cada una y compartirlas en redes sociales.
+- Users can register and login into their account.
+- Forgot password functionality.
+- User's tab, which allows users to modify their account information, like name, location, or age. They can also set their profile picture by choosing from the gallery or taking a new picture from the camera.
+- Store's tab, where users can add products to their shopping cart.
+- Shopping cart's tab, where users can see which products are in their respective shopping carts, as well as modifying quantities of products or removing products altogether. Shopping cart's tab is where users can confirm their purchase, too.   
+- Purchase history screen, where users can check their past purchases in detail. They can also share any of their purchases in a social media network of their choice.
 
 ## Screenshots:
 
